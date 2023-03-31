@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3.3"
 
 services:
     postgres:
@@ -19,7 +19,8 @@ services:
             - 5432:5432
 
     backend:
-        build: server/
+        # build: server/
+        image: argus416/h3-facebook-clone-back
         container_name: backend_container
         expose:
             # - 5432
@@ -37,14 +38,15 @@ services:
             restart_policy:
                 condition: on-failure # condition: none, on-failure, or any (default)
                 delay: 3s # Duration between restart attempts
-                max_attempts: 3 # Maximum number of attempts outside of the restart window
+                max_attempts: 10 # Maximum number of attempts outside of the restart window
                 window: 120s # Duration for determining if a restart is successful
        
         depends_on:
            - postgres
 
     frontend:
-        build: app/
+        # build: app/
+        image: argus416/h3-facebook-clone-front
         container_name: frontend
         expose:
             # - 5432

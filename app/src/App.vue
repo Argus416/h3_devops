@@ -1,6 +1,5 @@
 <script setup>
     import Navbar from "./components/Navbar.vue"
-    import NewPost from "./components/Post/NewPost.vue";
     import { useUserStore } from "./stores/user";
     import { usePostStore } from "./stores/post";
     
