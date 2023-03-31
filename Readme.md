@@ -7,4 +7,4 @@
 
 
 ## Notes : 
-- Veuillez notez que quand vous créez un nouveau post, le lien de l'image doit pas dépasser 255 carctère
+- Veuillez notez que quand vous créez un nouveau post, le lien de l'image doit pas dépasser 255 caractère
