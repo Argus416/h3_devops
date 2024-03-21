@@ -15,15 +15,17 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD}}  
 
-      - name: Build and push Docker image front end
+      - name: Build and push Docker image frontend
         uses: docker/build-push-action@v3
         with:
+          context: ./app
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/h3-facebook-clone-front:latest
 
 
-      - name: Build and push Docker image front end
+      - name: Build and push Docker image backend
         uses: docker/build-push-action@v3
         with:
+            context: ./server
             push: true
             tags: ${{ secrets.DOCKERHUB_USERNAME }}/h3-facebook-clone-back:latest
