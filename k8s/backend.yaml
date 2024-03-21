@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: facebook-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: facebook-backend
+  template:
+    metadata:
+      labels:
+        app: facebook-backend
+    spec:
+      containers:
+      - name: facebook-backend
+        image: argus416/h3-facebook-clone-back
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3001
+        resources:
+          limits:
+            cpu: "1"
+            memory: "1Gi"
+          requests:
+            cpu: "100m"
+            memory: "256Mi"
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: facebook-backend
+spec:
+  selector:
+    app: facebook-backend
+  ports:
+  - port: 3001
+    targetPort: 3001
+  type: LoadBalancer
