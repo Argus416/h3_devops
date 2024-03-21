@@ -17,7 +17,7 @@ spec:
         image: argus416/h3-facebook-clone-front
         imagePullPolicy: Always
         ports:
-        - containerPort: 3000
+        - containerPort: 4173
     
 ---
 
@@ -29,6 +29,6 @@ spec:
   selector:
     app: facebook-front
   ports:
-  - port: 3000
-    targetPort: 3000
+  - port: 4173
+    targetPort: 4173
   type: LoadBalancer

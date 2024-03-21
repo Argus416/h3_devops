@@ -1,11 +1,15 @@
-FROM node:18
+FROM node:20
 
 WORKDIR /app
 
 COPY . .
 
-RUN npm install 
+RUN npm install -g pnpm
 
-EXPOSE 3000
+RUN pnpm install
 
-CMD [ "yarn", "run", "dev" ]
+RUN pnpm run build
+
+EXPOSE 4173
+
+CMD ["pnpm", "preview"]
