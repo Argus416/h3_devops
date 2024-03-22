@@ -1,22 +1,22 @@
 version: "3.3"
 
 services:
-    postgres:
-        image: postgres
-        container_name: postgres_compose
-        environment:
-            POSTGRES_USER: mohamad
-            POSTGRES_PASSWORD: 123321
-            POSTGRES_DB: mohamad
-        networks:
-            - postgres
-        expose:
-            - 5432
-        ports:
-            - 5432:5432
+    # postgres:
+    #     image: postgres
+    #     container_name: postgres_compose
+    #     environment:
+    #         POSTGRES_USER: mohamad
+    #         POSTGRES_PASSWORD: 123321
+    #         POSTGRES_DB: mohamad
+    #     networks:
+    #         - postgres
+    #     expose:
+    #         - 5432
+    #     ports:
+    #         - 5432:5432
 
     backend:
-        build: server/
+        # build: ./server/
         image: argus416/h3-facebook-clone-back
         container_name: backend_container
         expose:
@@ -36,11 +36,11 @@ services:
                 max_attempts: 10 
                 window: 120s 
        
-        depends_on:
-           - postgres
+        # depends_on:
+        #    - postgres
 
     frontend:
-        build: app/
+        # build: ./app/
         image: argus416/h3-facebook-clone-front
         container_name: frontend
         expose:

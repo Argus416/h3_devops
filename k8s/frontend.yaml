@@ -1,33 +1,40 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: facebook-front
+  name: mohamad-facebook-front
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: facebook-front
+      app: mohamad-facebook-front
   template:
     metadata:
       labels:
-        app: facebook-front
+        app: mohamad-facebook-front
     spec:
-      containers:
-      - name: facebook-front
-        image: argus416/h3-facebook-clone-front
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 4173
-    
+        containers:
+        - name: mohamad-facebook-front
+          image: argus416/h3-facebook-clone-front
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "0.5"
+              memory: "512Mi"
+            requests:
+              cpu: "0.1"
+              memory: "128Mi"
+          ports:
+          - containerPort: 4173
+
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: facebook-front
+  name: mohamad-facebook-front
 spec:
   selector:
-    app: facebook-front
+    app: mohamad-facebook-front
   ports:
   - port: 4173
     targetPort: 4173

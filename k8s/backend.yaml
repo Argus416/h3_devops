@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: facebook-backend
+  name: mohamad-facebook-backend
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: facebook-backend
+      app: mohamad-facebook-backend
   template:
     metadata:
       labels:
-        app: facebook-backend
+        app: mohamad-facebook-backend
     spec:
       containers:
-      - name: facebook-backend
+      - name: mohamad-facebook-backend
         image: argus416/h3-facebook-clone-back
         imagePullPolicy: Always
         ports:
@@ -30,10 +30,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: facebook-backend
+  name: mohamad-facebook-backend
 spec:
   selector:
-    app: facebook-backend
+    app: mohamad-facebook-backend
   ports:
   - port: 3001
     targetPort: 3001
