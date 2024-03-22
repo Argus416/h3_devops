@@ -31,6 +31,7 @@ jobs:
   delete-kube-deployments:
     runs-on: ubuntu-latest 
     if: always()
+    needs: [build-and-push]
     steps:
       - name: Checkout repository code
         uses: actions/checkout@v4
@@ -52,11 +53,11 @@ jobs:
 
       - name: Delete Kubernetes frontend deployment
         run: kubectl delete -f ./k8s/frontend.yaml
-    needs: [build-and-push]
         
-
   recreate-kube-deployments:
       runs-on: ubuntu-latest 
+      if: always()
+      needs: [delete-kube-deployments]
       steps:
         - name: Checkout repository code
           uses: actions/checkout@v4
@@ -78,4 +79,4 @@ jobs:
   
         - name: Update Kubernetes frontend deployment
           run: kubectl apply -f ./k8s/frontend.yaml
-      needs: [delete-kube-deployments]
+      
