@@ -36,6 +36,6 @@ spec:
   selector:
     app: mohamad-facebook-front
   ports:
-  - port: 4173
+  - port: 80
     targetPort: 4173
   type: LoadBalancer
