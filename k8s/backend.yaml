@@ -38,3 +38,5 @@ spec:
   - port: 80
     targetPort: 3001
   type: LoadBalancer
+  loadBalancerIP: 4.225.193.68
+  
