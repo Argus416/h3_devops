@@ -41,6 +41,12 @@ jobs:
       - name: Get Azure kubernetes cluster informations
         run: az aks get-credentials --resource-group hitema_kube --name hitema
 
+      - name: Delete Kubernetes backend deployment
+        run: kubectl delete -f ./k8s/backend.yaml
+
+      - name: Delete Kubernetes frontend deployment
+        run: kubectl delete -f ./k8s/frontend.yaml
+        
       - name: Update Kubernetes backend deployment
         run: kubectl apply -f ./k8s/backend.yaml
 
