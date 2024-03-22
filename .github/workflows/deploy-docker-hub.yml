@@ -52,6 +52,7 @@ jobs:
 
       - name: Delete Kubernetes frontend deployment
         run: kubectl delete -f ./k8s/frontend.yaml
+    needs: [build-and-push]
         
 
   recreate-kube-deployments:
@@ -77,3 +78,4 @@ jobs:
   
         - name: Update Kubernetes frontend deployment
           run: kubectl apply -f ./k8s/frontend.yaml
+      needs: [delete-kube-deployments]
