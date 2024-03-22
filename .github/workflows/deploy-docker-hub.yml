@@ -21,17 +21,20 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/h3-facebook-clone-front:latest
 
-
       - name: Build and push Docker image backend
         uses: docker/build-push-action@v3
         with:
             context: ./server
             push: true
             tags: ${{ secrets.DOCKERHUB_USERNAME }}/h3-facebook-clone-back:latest
+
   delete-kube-deployments:
     runs-on: ubuntu-latest 
     if: always()
     steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
       - name: Install kubectl
         run: sudo apt-get update && sudo snap install kubectl --classic
 
@@ -54,6 +57,9 @@ jobs:
   recreate-kube-deployments:
       runs-on: ubuntu-latest 
       steps:
+        - name: Checkout repository code
+          uses: actions/checkout@v4
+
         - name: Install kubectl
           run: sudo apt-get update && sudo snap install kubectl --classic
   
