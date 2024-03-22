@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: mohamad-facebook-backend
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: mohamad-facebook-backend

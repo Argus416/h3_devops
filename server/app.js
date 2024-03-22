@@ -8,11 +8,15 @@ const cors = require("@fastify/cors");
 const fastifyStatic = require("@fastify/static");
 const helmet = require("@fastify/helmet");
 const mapRoutes = require('@fastify/routes');
+const metricsPlugin = require('fastify-metrics');
 
 
 const fastify = Fastify({
 	logger: true,
 });
+
+
+fastify.register(metricsPlugin, { endpoint: '/metrics' });
 
 fastify.register(fastifyStatic, {
 	root: path.join(__dirname, "public"),

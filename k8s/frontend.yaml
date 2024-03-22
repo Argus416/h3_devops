@@ -39,3 +39,4 @@ spec:
   - port: 80
     targetPort: 4173
   type: LoadBalancer
+  loadBalancerIP: 4.225.55.120
